@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ID8FUN UI 设计系统演示</title>
+    <link rel="icon" type="image/png" href="img/AI Design.png">
+    <link rel="stylesheet" href="design-system.css">
+    <style>
+        /* 额外的演示样式 */
+        .demo-section {
+            margin-bottom: 3rem;
+        }
+        
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .color-demo {
+            height: 4rem;
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+        
+        .theme-toggle {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-background text-foreground">
+    <!-- 主题切换按钮 -->
+    <button class="btn btn-outline btn-icon theme-toggle" onclick="toggleTheme()" title="切换主题">
+        🌓
+    </button>
+
+    <!-- 动态背景 -->
+    <div class="gradient-bg">
+        <svg xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <filter id="goo">
+                    <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                    <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -8" result="goo" />
+                    <feBlend in="SourceGraphic" in2="goo" />
+                </filter>
+            </defs>
+        </svg>
+        <div class="gradients-container">
+            <div class="g1"></div>
+            <div class="g2"></div>
+            <div class="g3"></div>
+            <div class="g4"></div>
+            <div class="g5"></div>
+            <div class="interactive"></div>
+        </div>
+    </div>
+
+    <div class="container mx-auto p-6" style="position: relative; z-index: 10;">
+        <!-- 页面标题 -->
+        <header class="text-center mb-8">
+            <div class="flex items-center justify-center gap-4 mb-4">
+                <img src="img/AI Design.png" alt="ID8FUN Logo" class="w-16 h-16 object-contain">
+                <h1 class="text-4xl font-bold">ID8FUN UI 设计系统</h1>
+            </div>
+            <p class="text-xl text-muted-foreground max-w-2xl mx-auto">
+                完整的UI组件库展示，包含所有设计元素和交互状态
+            </p>
+        </header>
+
+        <!-- 颜色系统 -->
+        <section class="demo-section">
+            <h2 class="text-3xl font-semibold mb-6">颜色系统</h2>
+            <div class="demo-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title text-lg">主色调</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="color-demo bg-primary text-primary-foreground">Primary</div>
+                        <p class="text-sm text-muted-foreground">主要按钮、链接颜色</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title text-lg">次要色</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="color-demo bg-secondary text-secondary-foreground">Secondary</div>
+                        <p class="text-sm text-muted-foreground">次要按钮、背景色</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title text-lg">强调色</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="color-demo bg-accent text-accent-foreground">Accent</div>
+                        <p class="text-sm text-muted-foreground">悬停状态、强调元素</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title text-lg">危险色</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="color-demo bg-destructive text-destructive-foreground">Destructive</div>
+                        <p class="text-sm text-muted-foreground">错误、删除操作</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 按钮系统 -->
+        <section class="demo-section">
+            <h2 class="text-3xl font-semibold mb-6">按钮系统</h2>
+            <div class="demo-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title text-lg">按钮变体</h3>
+                        <p class="card-description">不同用途的按钮样式</p>
+                    </div>
+                    <div class="card-content">
+                        <div class="flex flex-col gap-3">
+                            <button class="btn btn-primary btn-default">主要按钮</button>
+                            <button class="btn btn-secondary btn-default">次要按钮</button>
+                            <button class="btn btn-outline btn-default">轮廓按钮</button>
+                            <button class="btn btn-ghost btn-default">幽灵按钮</button>
+                            <button class="btn btn-destructive btn-default">危险按钮</button>
+                            <button class="btn btn-link btn-default">链接按钮</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title text-lg">按钮尺寸</h3>
+                        <p class="card-description">不同场景的按钮大小</p>
+                    </div>
+                    <div class="card-content">
+                        <div class="flex flex-col items-start gap-3">
+                            <button class="btn btn-primary btn-sm">小按钮</button>
+                            <button class="btn btn-primary btn-default">默认按钮</button>
+                            <button class="btn btn-primary btn-lg">大按钮</button>
+                            <button class="btn btn-primary btn-icon">⚙</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title text-lg">按钮状态</h3>
+                        <p class="card-description">不同交互状态的按钮</p>
+                    </div>
+                    <div class="card-content">
+                        <div class="flex flex-col gap-3">
+                            <button class="btn btn-primary btn-default">正常状态</button>
+                            <button class="btn btn-primary btn-default" disabled>禁用状态</button>
+                            <button class="btn btn-secondary btn-default" onclick="simulateLoading(this)">点击加载</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 卡片系统 -->
+        <section class="demo-section">
+            <h2 class="text-3xl font-semibold mb-6">卡片系统</h2>
+            <div class="demo-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">基础卡片</h3>
+                        <p class="card-description">
+                            这是一个标准的卡片组件，包含标题、描述和内容区域。
+                        </p>
+                    </div>
+                    <div class="card-content">
+                        <p class="text-sm text-muted-foreground">
+                            卡片内容区域可以放置任何类型的内容，如文本、图片、表单等。
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-primary btn-default w-full">操作按钮</button>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-primary-foreground font-bold">
+                                张
+                            </div>
+                            <div>
+                                <h3 class="card-title text-lg">张三</h3>
+                                <p class="card-description">前端开发工程师</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="space-y-2">
+                            <div class="flex justify-between text-sm">
+                                <span class="text-muted-foreground">项目完成度</span>
+                                <span class="font-medium">75%</span>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-indicator" style="transform: translateX(-25%)"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer space-x-2">
+                        <button class="btn btn-outline btn-sm">查看详情</button>
+                        <button class="btn btn-primary btn-sm">发送消息</button>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div class="flex items-center justify-between">
+                            <h3 class="card-title text-sm font-medium">总下载量</h3>
+                            <span class="text-muted-foreground">📥</span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="text-2xl font-bold">12,345</div>
+                        <p class="text-xs text-muted-foreground">
+                            <span style="color: #22c55e;">+20.1%</span> 较上月
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 字体系统 -->
+        <section class="demo-section">
+            <h2 class="text-3xl font-semibold mb-6">字体系统</h2>
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">字体层级与样式</h3>
+                    <p class="card-description">项目中使用的字体大小和样式规范</p>
+                </div>
+                <div class="card-content space-y-6">
+                    <div class="space-y-4">
+                        <h4 class="text-lg font-semibold border-b pb-2">标题字体</h4>
+                        <div class="space-y-3">
+                            <h1 class="text-4xl font-bold">H1 - 页面主标题 (36px)</h1>
+                            <h2 class="text-3xl font-semibold">H2 - 章节标题 (30px)</h2>
+                            <h3 class="text-2xl font-semibold">H3 - 子章节标题 (24px)</h3>
+                            <h4 class="text-xl font-semibold">H4 - 小标题 (20px)</h4>
+                            <h5 class="text-lg font-semibold">H5 - 次级标题 (18px)</h5>
+                            <h6 class="text-base font-semibold">H6 - 基础标题 (16px)</h6>
+                        </div>
+                    </div>
+                    
+                    <div class="separator separator-horizontal"></div>
+                    
+                    <div class="space-y-4">
+                        <h4 class="text-lg font-semibold border-b pb-2">正文字体</h4>
+                        <div class="space-y-3">
+                            <p class="text-lg">大号正文 - 重要内容展示 (18px)</p>
+                            <p class="text-base">标准正文 - 常规内容阅读 (16px)</p>
+                            <p class="text-sm">小号正文 - 次要信息说明 (14px)</p>
+                            <p class="text-xs text-muted-foreground">说明文字 - 标签和提示信息 (12px)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="separator separator-horizontal"></div>
+                    
+                    <div class="space-y-4">
+                        <h4 class="text-lg font-semibold border-b pb-2">字重规范</h4>
+                        <div class="space-y-2">
+                            <p class="font-light">细体 (300) - 次要信息</p>
+                            <p class="font-normal">常规 (400) - 正文内容</p>
+                            <p class="font-medium">中等 (500) - 按钮文字</p>
+                            <p class="font-semibold">半粗 (600) - 次级标题</p>
+                            <p class="font-bold">粗体 (700) - 重要信息</p>
+                            <p class="font-black">超粗 (900) - 特殊强调</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 表单组件 -->
+        <section class="demo-section">
+            <h2 class="text-3xl font-semibold mb-6">表单组件</h2>
+            <div class="card max-w-2xl mx-auto">
+                <div class="card-header">
+                    <h3 class="card-title">表单示例</h3>
+                    <p class="card-description">常用的表单输入组件展示</p>
+                </div>
+                <div class="card-content space-y-6">
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="space-y-2">
+                            <label class="label">姓名</label>
+                            <input class="input" type="text" placeholder="请输入姓名">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="label">邮箱</label>
+                            <input class="input" type="email" placeholder="请输入邮箱">
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-2">
+                        <label class="label">消息</label>
+                        <textarea class="textarea" placeholder="请输入您的消息..." rows="4"></textarea>
+                    </div>
+
+                    <div class="flex items-center space-x-2">
+                        <input type="checkbox" id="notifications" class="w-4 h-4">
+                        <label class="label" for="notifications">接收邮件通知</label>
+                    </div>
+                </div>
+                <div class="card-footer space-x-2">
+                    <button class="btn btn-outline btn-default">取消</button>
+                    <button class="btn btn-primary btn-default">提交</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 反馈组件 -->
+        <section class="demo-section">
+            <h2 class="text-3xl font-semibold mb-6">反馈组件</h2>
+            <div class="space-y-4">
+                <div class="alert">
+                    <div class="alert-title">ℹ️ 信息提示</div>
+                    <div class="alert-description">
+                        这是一个普通的信息提示，用于向用户传达重要信息。
+                    </div>
+                </div>
+
+                <div class="alert" style="border-color: #22c55e; background-color: rgba(34, 197, 94, 0.1); color: #15803d;">
+                    <div class="alert-title">✅ 成功提示</div>
+                    <div class="alert-description">
+                        操作已成功完成！您的文件已经成功上传并处理。
+                    </div>
+                </div>
+
+                <div class="alert" style="border-color: #eab308; background-color: rgba(234, 179, 8, 0.1); color: #a16207;">
+                    <div class="alert-title">⚠️ 警告提示</div>
+                    <div class="alert-description">
+                        请注意：此操作可能会影响您的数据，请谨慎操作。
+                    </div>
+                </div>
+
+                <div class="alert alert-destructive">
+                    <div class="alert-title">❌ 错误提示</div>
+                    <div class="alert-description">
+                        操作失败：文件格式不支持，请上传PDF格式的文件。
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 标签和徽章 -->
+        <section class="demo-section">
+            <h2 class="text-3xl font-semibold mb-6">标签和徽章</h2>
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">徽章组件</h3>
+                    <p class="card-description">用于标记状态、分类等信息</p>
+                </div>
+                <div class="card-content">
+                    <div class="flex flex-wrap gap-2">
+                        <span class="badge badge-default">默认</span>
+                        <span class="badge badge-secondary">次要</span>
+                        <span class="badge badge-outline">轮廓</span>
+                        <span class="badge badge-destructive">危险</span>
+                        <span class="badge" style="background-color: rgba(34, 197, 94, 0.1); color: #15803d;">成功</span>
+                        <span class="badge" style="background-color: rgba(59, 130, 246, 0.1); color: #1d4ed8;">信息</span>
+                        <span class="badge" style="background-color: rgba(234, 179, 8, 0.1); color: #a16207;">警告</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 页脚 -->
+        <footer class="text-center py-8 border-t mt-12">
+            <p class="text-muted-foreground">
+                ID8FUN UI 设计规范 - 基于现代CSS设计系统
+            </p>
+            <p class="text-sm text-muted-foreground mt-2">
+                支持明暗主题切换，响应式设计，可访问性友好 | 由 ID8FUN 提供
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        // 主题切换功能
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+            localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+        }
+
+        // 页面加载时恢复主题设置
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+            }
+        });
+
+        // 模拟加载状态
+        function simulateLoading(button) {
+            const originalText = button.textContent;
+            button.textContent = '加载中...';
+            button.disabled = true;
+            
+            setTimeout(() => {
+                button.textContent = originalText;
+                button.disabled = false;
+            }, 2000);
+        }
+
+        // 监听系统主题变化
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+            if (!localStorage.getItem('theme')) {
+                if (e.matches) {
+                    document.documentElement.classList.add('dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                }
+            }
+        });
+
+        // 添加一些交互效果
+        document.addEventListener('DOMContentLoaded', function() {
+            // 为卡片添加悬停效果
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-2px)';
+                    this.style.transition = 'transform 0.2s ease-in-out';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+
+            // 为按钮添加点击效果
+            const buttons = document.querySelectorAll('.btn');
+            buttons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    // 创建涟漪效果
+                    const ripple = document.createElement('span');
+                    const rect = this.getBoundingClientRect();
+                    const size = Math.max(rect.width, rect.height);
+                    const x = e.clientX - rect.left - size / 2;
+                    const y = e.clientY - rect.top - size / 2;
+                    
+                    ripple.style.cssText = `
+                        position: absolute;
+                        width: ${size}px;
+                        height: ${size}px;
+                        left: ${x}px;
+                        top: ${y}px;
+                        background: rgba(255, 255, 255, 0.3);
+                        border-radius: 50%;
+                        transform: scale(0);
+                        animation: ripple 0.6s linear;
+                        pointer-events: none;
+                    `;
+                    
+                    this.style.position = 'relative';
+                    this.style.overflow = 'hidden';
+                    this.appendChild(ripple);
+                    
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 600);
+                });
+            });
+        });
+
+        // 添加涟漪动画CSS
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

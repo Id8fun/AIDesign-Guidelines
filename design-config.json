@@ -1,0 +1,143 @@
+{
+  "designSystem": {
+    "name": "ID8FUN Design System",
+    "version": "1.0.0",
+    "description": "AI-friendly design system configuration for ID8FUN projects"
+  },
+  "colors": {
+    "cssVariables": {
+      "--primary": "0 0% 9%",
+      "--primary-foreground": "0 0% 98%",
+      "--secondary": "0 0% 96.1%",
+      "--secondary-foreground": "0 0% 9%",
+      "--background": "0 0% 100%",
+      "--foreground": "0 0% 3.9%",
+      "--muted-foreground": "0 0% 45.1%",
+      "--destructive": "0 84.2% 60.2%",
+      "--border": "0 0% 89.8%",
+      "--radius": "0.5rem"
+    },
+    "usage": {
+      "primary": "主要按钮、链接、重要元素",
+      "secondary": "次要按钮、辅助元素",
+      "destructive": "危险操作、删除按钮",
+      "muted": "次要文字、说明文字"
+    }
+  },
+  "components": {
+    "button": {
+      "baseClass": "btn",
+      "variants": {
+        "primary": "btn-primary",
+        "secondary": "btn-secondary",
+        "destructive": "btn-destructive",
+        "outline": "btn-outline"
+      },
+      "sizes": {
+        "default": "btn-default",
+        "sm": "btn-sm",
+        "lg": "btn-lg"
+      },
+      "template": "<button class=\"btn {variant} {size}\">{text}</button>"
+    },
+    "card": {
+      "baseClass": "card",
+      "structure": {
+        "header": "card-header",
+        "title": "card-title",
+        "description": "card-description",
+        "content": "card-content",
+        "footer": "card-footer"
+      },
+      "template": "<div class=\"card\"><div class=\"card-header\"><h3 class=\"card-title\">{title}</h3><p class=\"card-description\">{description}</p></div><div class=\"card-content\">{content}</div><div class=\"card-footer\">{footer}</div></div>"
+    },
+    "input": {
+      "baseClass": "input",
+      "wrapper": "space-y-2",
+      "label": "label",
+      "template": "<div class=\"space-y-2\"><label class=\"label\">{label}</label><input class=\"input\" type=\"{type}\" placeholder=\"{placeholder}\"></div>"
+    },
+    "alert": {
+      "baseClass": "alert",
+      "variants": {
+        "default": "alert",
+        "destructive": "alert alert-destructive"
+      },
+      "structure": {
+        "title": "alert-title",
+        "description": "alert-description"
+      },
+      "template": "<div class=\"{variant}\"><div class=\"alert-title\">{icon} {title}</div><div class=\"alert-description\">{description}</div></div>"
+    }
+  },
+  "typography": {
+    "headings": {
+      "h1": "text-4xl font-bold",
+      "h2": "text-3xl font-semibold",
+      "h3": "text-2xl font-semibold",
+      "h4": "text-xl font-medium"
+    },
+    "body": {
+      "large": "text-lg",
+      "base": "text-base",
+      "small": "text-sm",
+      "xs": "text-xs text-muted-foreground"
+    }
+  },
+  "spacing": {
+    "vertical": ["space-y-2", "space-y-4", "space-y-6"],
+    "gap": ["gap-2", "gap-4", "gap-6"],
+    "padding": ["p-4", "p-6"],
+    "margin": ["m-4", "m-6"]
+  },
+  "layout": {
+    "grid": {
+      "responsive": "grid md:grid-cols-2 lg:grid-cols-3 gap-4",
+      "simple": "grid grid-cols-{n} gap-4"
+    },
+    "flex": {
+      "responsive": "flex flex-col md:flex-row gap-4",
+      "center": "flex items-center justify-center"
+    }
+  },
+  "interactions": {
+    "hover": {
+      "button": "hover:bg-primary/90",
+      "card": "hover:shadow-md transition-shadow",
+      "link": "hover:underline"
+    },
+    "focus": {
+      "input": "focus:ring-2 focus:ring-primary",
+      "button": "focus:outline-none focus:ring-2 focus:ring-primary"
+    },
+    "transitions": {
+      "default": "transition-all duration-200 ease-in-out",
+      "transform": "transform hover:translate-y-[-2px]"
+    }
+  },
+  "aiInstructions": {
+    "rules": [
+      "必须使用预定义的CSS变量和类名",
+      "必须包含响应式设计",
+      "必须添加适当的交互状态",
+      "必须使用语义化HTML结构",
+      "禁止使用自定义颜色值或内联样式"
+    ],
+    "promptTemplate": "请按照ID8FUN设计规范创建{componentType}组件，包含：{requirements}。使用design-config.json中定义的类名和结构。",
+    "checkList": [
+      "使用了正确的CSS变量",
+      "遵循了颜色规范",
+      "包含了响应式类名",
+      "添加了交互状态",
+      "使用了语义化HTML",
+      "符合可访问性标准"
+    ]
+  },
+  "files": {
+    "mainGuide": "AI-DESIGN-GUIDE.md",
+    "cssFile": "design-system.css",
+    "demo": "demo.html",
+    "documentation": "ui-design-system.md",
+    "config": "design-config.json"
+  }
+}
