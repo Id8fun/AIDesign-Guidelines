@@ -1,5 +1,7 @@
 # ID8FUN 设计系统
 
+![ID8FUN AI Design System](img/AI%20Design.png)
+
 > 专为AI编程助手设计的智能设计规范系统
 
 ## 🚀 快速开始
@@ -487,6 +489,38 @@ git push -u origin main
 git tag -a v1.0.0 -m "First stable release"
 git push origin v1.0.0
 ```
+
+## 📄 开源协议
+
+本项目采用 **GPL-3.0 开源协议**
+
+### 协议说明
+- ✅ **自由使用**：可以自由地运行、学习、修改和分发本软件
+- ✅ **商业使用**：允许商业使用，但需要遵循GPL协议条款
+- ✅ **修改分发**：可以修改代码并分发，但必须保持相同的开源协议
+- ⚠️ **Copyleft**：基于本项目的衍生作品必须同样采用GPL协议开源
+- 📋 **声明要求**：使用时需要保留原始版权声明和协议文本
+
+### 使用须知
+```
+Copyright (C) 2024 ID8FUN Team
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+```
+
+### 贡献指南
+欢迎提交 Issue 和 Pull Request 来改进本项目！
 
 ---
 
