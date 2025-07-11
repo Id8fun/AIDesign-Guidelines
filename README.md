@@ -63,7 +63,15 @@ https://raw.githubusercontent.com/Id8fun/AIDesign-Guidelines/main/AI-DESIGN-GUID
 
 ## 🤖 如何把设计规范给AI
 
-### 🎯 最简单的方法（复制粘贴即可）
+### 🎯 方法1：直接获取规范文件（推荐）
+```
+请使用ID8FUN设计规范创建[组件名称]：
+设计规范文件：https://raw.githubusercontent.com/Id8fun/AIDesign-Guidelines/main/AI-DESIGN-GUIDE.md
+CSS样式文件：https://raw.githubusercontent.com/Id8fun/AIDesign-Guidelines/main/design-system.css
+要求：严格按照规范创建，包含主题切换、多语言、响应式设计
+```
+
+### 🎯 方法2：使用仓库链接（备用）
 ```
 请使用ID8FUN设计规范创建[组件名称]：
 
@@ -73,23 +81,117 @@ https://raw.githubusercontent.com/Id8fun/AIDesign-Guidelines/main/AI-DESIGN-GUID
 要求：严格按照规范中的CSS变量、组件结构和交互状态来创建
 ```
 
+## 📋 核心设计规范摘要（AI直接使用）
+
+### ⚡ 必须遵循的核心要求
+1. **CSS变量系统**：使用 `hsl(var(--primary))`，禁止硬编码颜色
+2. **明暗主题**：支持 `.dark` 类切换，确保两种主题下正常显示
+3. **动态背景**：页面级组件需要 `.background-container` 动态渐变背景
+4. **主题切换按钮**：固定48px×48px，位置 `top: 1.5rem; right: 1.5rem`
+5. **多语言支持**：包含中文、英文、阿拉伯语、日语、韩语切换
+6. **响应式设计**：使用 `md:`、`lg:`、`xl:` 断点
+7. **交互状态**：包含 `hover:`、`focus:`、`disabled:` 状态
+
+### 🎨 核心CSS变量
+```css
+/* 亮色主题 */
+:root {
+  --background: 0 0% 100%;        /* 页面背景 */
+  --foreground: 0 0% 3.9%;        /* 主要文字 */
+  --primary: 0 0% 9%;             /* 主要按钮 */
+  --primary-foreground: 0 0% 98%; /* 主按钮文字 */
+  --secondary: 0 0% 96.1%;        /* 次要按钮 */
+  --muted: 0 0% 96.1%;            /* 静音背景 */
+  --muted-foreground: 0 0% 45.1%; /* 次要文字 */
+  --border: 0 0% 89.8%;           /* 边框颜色 */
+  --radius: 0.5rem;               /* 圆角大小 */
+}
+
+/* 暗色主题 */
+.dark {
+  --background: 0 0% 3.9%;
+  --foreground: 0 0% 98%;
+  --primary: 0 0% 98%;
+  --primary-foreground: 0 0% 9%;
+  --secondary: 0 0% 14.9%;
+  --muted: 0 0% 14.9%;
+  --muted-foreground: 0 0% 63.9%;
+  --border: 0 0% 14.9%;
+}
+```
+
 ### 📋 给AI的完整提示词模板
 ```
 系统角色：你是ID8FUN项目的专业前端开发AI助手
 
 设计规范：
-- 仓库：https://github.com/Id8fun/AIDesign-Guidelines.git  
-- 规范文件：AI-DESIGN-GUIDE.md
-- 配置文件：design-config.json
+- 规范文件：https://raw.githubusercontent.com/Id8fun/AIDesign-Guidelines/main/AI-DESIGN-GUIDE.md
+- CSS文件：https://raw.githubusercontent.com/Id8fun/AIDesign-Guidelines/main/design-system.css
+- 备用仓库：https://github.com/Id8fun/AIDesign-Guidelines.git
 
 任务：创建 [具体组件描述]
 
 核心要求：
 1. 使用CSS变量（--primary, --secondary等）
-2. 支持明暗主题切换
+2. 支持明暗主题切换（.dark类）
 3. 包含动态背景和多语言支持
 4. 添加完整交互状态
 5. 确保响应式设计
+6. 主题切换按钮48px×48px
+7. 语义化HTML和ARIA属性
+```
+
+## 🔧 故障排除：AI编译器无法读取规范
+
+### ❌ 常见问题
+如果其他AI编译器提示无法访问GitHub链接或读取设计规范，请使用以下解决方案：
+
+### ✅ 解决方案1：使用直接文件链接
+```
+请使用ID8FUN设计规范创建[组件名称]：
+
+核心CSS变量（必须使用）：
+:root {
+  --background: 0 0% 100%;
+  --foreground: 0 0% 3.9%;
+  --primary: 0 0% 9%;
+  --primary-foreground: 0 0% 98%;
+  --secondary: 0 0% 96.1%;
+  --muted: 0 0% 96.1%;
+  --muted-foreground: 0 0% 45.1%;
+  --border: 0 0% 89.8%;
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: 0 0% 3.9%;
+  --foreground: 0 0% 98%;
+  --primary: 0 0% 98%;
+  --primary-foreground: 0 0% 9%;
+  --secondary: 0 0% 14.9%;
+  --muted: 0 0% 14.9%;
+  --muted-foreground: 0 0% 63.9%;
+  --border: 0 0% 14.9%;
+}
+
+必须包含功能：
+1. 主题切换按钮（48px×48px，右上角）
+2. 多语言切换（中英阿日韩）
+3. 响应式设计（md:、lg:、xl:断点）
+4. 动态渐变背景
+5. 完整交互状态（hover、focus、disabled）
+```
+
+### ✅ 解决方案2：复制完整规范
+如果AI仍然无法理解，请直接复制本仓库中的 `AI-DESIGN-GUIDE.md` 文件内容到对话中。
+
+### ✅ 解决方案3：分步骤指导
+```
+第1步：创建基础HTML结构，包含主题切换和语言切换按钮
+第2步：添加CSS变量系统，支持明暗主题
+第3步：实现响应式布局和交互状态
+第4步：添加JavaScript功能（主题切换、语言切换）
+第5步：测试所有功能和兼容性
 ```
 
 ### ✅ 检查AI生成的组件是否符合规范
