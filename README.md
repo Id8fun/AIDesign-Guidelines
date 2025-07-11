@@ -1,3 +1,10 @@
+<div align="right">
+  <button onclick="switchLanguage('zh')" style="margin-right: 8px; padding: 4px 8px; border: 1px solid #ccc; background: #f5f5f5; cursor: pointer;">中文</button>
+  <button onclick="switchLanguage('en')" style="padding: 4px 8px; border: 1px solid #ccc; background: #f5f5f5; cursor: pointer;">English</button>
+</div>
+
+<div id="content-zh" class="language-content">
+
 # ID8FUN 设计系统
 
 ![ID8FUN AI Design System](img/AI%20Design.png)
@@ -126,3 +133,159 @@ https://raw.githubusercontent.com/Id8fun/AIDesign-Guidelines/main/AI-DESIGN-GUID
 ---
 
 **🎉 现在AI可以通过此仓库自动获取并应用ID8FUN设计规范了！**
+
+</div>
+
+<div id="content-en" class="language-content" style="display: none;">
+
+# ID8FUN Design System
+
+![ID8FUN AI Design System](img/AI%20Design.png)
+
+> Intelligent design specification system designed specifically for AI programming assistants
+
+## 🔥 Quick Start (30 seconds)
+
+**Want AI to create components according to ID8FUN specifications? Just copy this to AI:**
+
+```
+Please create [component name] using ID8FUN design specifications:
+Design specs: https://github.com/Id8fun/AIDesign-Guidelines.git
+Spec file: AI-DESIGN-GUIDE.md
+Requirements: Strictly follow specs including theme switching, multi-language, responsive design
+```
+
+**That's it! AI will automatically fetch the specs and generate standard-compliant components.**
+
+## 🚀 Getting Started
+
+```bash
+# Clone repository
+git clone https://github.com/Id8fun/AIDesign-Guidelines.git
+cd AIDesign-Guidelines
+
+# Or as submodule
+git submodule add https://github.com/Id8fun/AIDesign-Guidelines.git design-system
+```
+
+### Core Files
+- **`AI-DESIGN-GUIDE.md`** - AI Design Specifications (Must Read)
+- **`design-system.css`** - Complete Style System
+- **`demo.html`** - Component Demo Page
+- **`design-config.json`** - Machine-readable Configuration
+
+### 🤖 How AI Uses This Design System
+
+#### Method 1: Direct Repository URL (Recommended)
+```
+Please create components using ID8FUN design specifications:
+Repository: https://github.com/Id8fun/AIDesign-Guidelines.git
+Spec file: AI-DESIGN-GUIDE.md
+```
+
+#### Method 2: Provide Specific File Links
+```
+Please create components according to these design specifications:
+https://raw.githubusercontent.com/Id8fun/AIDesign-Guidelines/main/AI-DESIGN-GUIDE.md
+```
+
+#### Method 3: Reference CSS in Project
+```html
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Id8fun/AIDesign-Guidelines@main/design-system.css">
+```
+
+## 🤖 How to Provide Design Specs to AI
+
+### 🎯 Simplest Method (Copy & Paste)
+```
+Please create [component name] using ID8FUN design specifications:
+
+Design spec repository: https://github.com/Id8fun/AIDesign-Guidelines.git
+Main spec file: AI-DESIGN-GUIDE.md
+
+Requirements: Strictly follow CSS variables, component structure and interaction states in the specs
+```
+
+### 📋 Complete Prompt Template for AI
+```
+System Role: You are a professional frontend development AI assistant for ID8FUN project
+
+Design Specifications:
+- Repository: https://github.com/Id8fun/AIDesign-Guidelines.git  
+- Spec file: AI-DESIGN-GUIDE.md
+- Config file: design-config.json
+
+Task: Create [specific component description]
+
+Core Requirements:
+1. Use CSS variables (--primary, --secondary, etc.)
+2. Support light/dark theme switching
+3. Include dynamic background and multi-language support
+4. Add complete interaction states
+5. Ensure responsive design
+```
+
+### ✅ Check if AI-generated Components Meet Specifications
+- [ ] Uses CSS variables instead of hardcoded colors
+- [ ] Includes theme toggle button (48px×48px)
+- [ ] Supports multi-language switching (5 languages)
+- [ ] Has dynamic background effects
+- [ ] Responsive layout works properly
+
+## 📁 Core Files
+
+- **`AI-DESIGN-GUIDE.md`** - AI Design Specifications (Must Read)
+- **`design-system.css`** - Complete Style System
+- **`demo.html`** - Component Demo Page
+- **`design-config.json`** - Machine-readable Configuration
+
+## 🎯 AI Usage Example
+
+```
+Please create a user card component according to ID8FUN design specifications, including:
+- User avatar, username and email
+- Action buttons and responsive layout
+```
+
+## 📚 Related Links
+
+- [📖 AI Design Guide](./AI-DESIGN-GUIDE.md)
+- [🎨 Live Demo](./demo.html)
+- [⚙️ Configuration File](./design-config.json)
+
+---
+
+## 📄 Open Source License
+
+This project is licensed under [GPL-3.0](./LICENSE).
+
+## 🤝 Contributing
+
+Welcome to submit Issues and Pull Requests to improve this design system!
+
+---
+
+**🎉 Now AI can automatically fetch and apply ID8FUN design specifications through this repository!**
+
+</div>
+
+<script>
+function switchLanguage(lang) {
+  const zhContent = document.getElementById('content-zh');
+  const enContent = document.getElementById('content-en');
+  
+  if (lang === 'zh') {
+    zhContent.style.display = 'block';
+    enContent.style.display = 'none';
+  } else {
+    zhContent.style.display = 'none';
+    enContent.style.display = 'block';
+  }
+}
+</script>
+
+<style>
+.language-content {
+  margin-top: 20px;
+}
+</style>
