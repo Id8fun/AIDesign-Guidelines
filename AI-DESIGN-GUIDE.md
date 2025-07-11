@@ -50,6 +50,34 @@ project-root/
     └── logo.png          # 项目图标
 ```
 
+## 📊 Google Analytics 集成
+
+### 统计代码集成
+ID8FUN设计系统已集成Google Analytics 4 (GA4)统计功能，AI生成页面时应在HTML头部包含以下代码：
+
+```html
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-E5FNDW6YH7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-E5FNDW6YH7');
+</script>
+```
+
+### 统计功能说明
+- **页面访问统计**：自动跟踪页面浏览量
+- **用户行为分析**：记录用户交互行为
+- **设备和地理位置**：分析用户设备类型和访问地区
+- **实时数据**：提供实时访问数据监控
+
+### AI集成注意事项
+1. **必须放置在头部**：统计代码必须放在 `<head>` 标签内的最前面
+2. **异步加载**：使用 `async` 属性确保不影响页面加载速度
+3. **隐私合规**：遵循GDPR等隐私法规要求
+4. **测试环境**：开发环境可选择性禁用统计功能
+
 ## 🎨 颜色系统与主题
 
 ### 明暗主题自动切换
